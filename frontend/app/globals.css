@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --ink-charcoal: #4a4a4a;
+  --ink-mid: #cbcbcb;
+  --ink-ivory: #ffffe3;
+  --ink-accent: #6d8196;
+  --ink-text-secondary: #8a8a8a;
+  --ink-hover: #f5f5d6;
+  --ink-white: #ffffff;
+  --ink-sidebar-hover: #5a5a5a;
+}
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-ink-charcoal: var(--ink-charcoal);
+  --color-ink-mid: var(--ink-mid);
+  --color-ink-ivory: var(--ink-ivory);
+  --color-ink-accent: var(--ink-accent);
+  --color-ink-secondary: var(--ink-text-secondary);
+  --color-ink-hover: var(--ink-hover);
+  --color-ink-white: var(--ink-white);
+  --color-ink-sidebar-hover: var(--ink-sidebar-hover);
+}
+
+body {
+  background: var(--ink-ivory);
+  color: var(--ink-charcoal);
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-mid);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-text-secondary);
+}
+
+/* Hide Next.js dev indicator */
+nextjs-portal {
+  display: none !important;
+}

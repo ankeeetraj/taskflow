@@ -7,7 +7,7 @@ import api from "@/lib/api";
 import Sidebar from "@/components/Sidebar";
 import TaskModal from "@/components/TaskModal";
 import InviteModal from "@/components/InviteModal";
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd";
 import toast from "react-hot-toast";
 import { Plus, Users, GripVertical } from "lucide-react";
 import { io, Socket } from "socket.io-client";
@@ -131,19 +131,14 @@ export default function BoardPage({ params }: { params: Promise<{ id: string }> 
     };
   }, [token, router, boardId]);
 
-  const onDragEnd = async (result: {
-    destination?: { droppableId: string; index: number };
-    source: { droppableId: string; index: number };
-    draggableId: string;
-  }) => {
-    const { source, destination, draggableId } = result;
-
+  const onDragEnd = async (result: DropResult) => {
+    const { destination, source, draggableId } = result;
+    
     if (!destination) return;
     if (
-      source.droppableId === destination.droppableId &&
-      source.index === destination.index
-    )
-      return;
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) return;
 
     const newTasks = Array.from(tasks);
     const draggedTaskIndex = newTasks.findIndex((t) => t.id === draggableId);

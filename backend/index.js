@@ -30,7 +30,13 @@ io.on('connection', (socket) => {
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://taskflow-alpha-henna.vercel.app'
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
